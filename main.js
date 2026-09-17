@@ -1,5 +1,5 @@
 var page = document.querySelector("body"); // Fiddling with the html body element.
-var lengthOfFile = 0; // Length of file, shrimple really
+var lengthOfFile = 0; // Length of file, shrimple really.
 var places = []; // Array to hold the places of the coins in the json file.
 var dataCollect = []; // Array to hold the data of the coins in the json file.
 var AgPrice = 0; // Variable to hold the current price of silver in CAD.
@@ -7,12 +7,19 @@ var lastUpdatedAt = null; // Time of the most recent successful price request.
 
 AgPriceCheck();
 
+// btw this whole thing worked fine when I was like, using the servers we get from the college
+// idk if it does or doesnt work on github yet, didn't test yet 
+// oh well!
+
 async function AgPriceCheck() {
 	const url = 'https://metal-sentinel.p.rapidapi.com/silver-price?currency=CAD';
 	const options = {
 		method: 'GET',
 		headers: {
-			'x-rapidapi-key': `${apiKey}`,
+			'x-rapidapi-key': `${apiKey}`, //i'm pretty sure I'm supposed to put my API key... somewhere... 
+            //I used to have my api key just right there lol
+            //not the safest tool in the shed im afraid
+            
 			'x-rapidapi-host': 'metal-sentinel.p.rapidapi.com',
 		    'Content-Type': 'application/json'
         }
