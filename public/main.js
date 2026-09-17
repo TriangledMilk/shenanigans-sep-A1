@@ -14,7 +14,7 @@ AgPriceCheck();
 async function AgPriceCheck() {
     try {
     const response = await fetch('/silver-price');
-    const result = await response.json();
+    const result = await res.json();
 
     if (!response.ok) {
       throw new Error(result.error || 'Unable to fetch the silver price.');

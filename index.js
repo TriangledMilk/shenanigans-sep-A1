@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 // publish our static frontend files
 app.use('/',express.static('./public')) 
-
+// for some reason when i had the stuff in a public folder github freaked the fuck out
+// gooood fucking god bruh
 
 // listen for requests from the frontend
 app.get("/silver-price", async (req, res) => {
