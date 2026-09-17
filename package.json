@@ -1,0 +1,24 @@
+{
+  "name": "shenanigans-sep-a1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node --env-file=.env index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TriangledMilk/shenanigans-sep-A1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TriangledMilk/shenanigans-sep-A1/issues"
+  },
+  "homepage": "https://github.com/TriangledMilk/shenanigans-sep-A1#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

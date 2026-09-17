@@ -12,23 +12,14 @@ AgPriceCheck();
 // oh well!
 
 async function AgPriceCheck() {
-	const url = 'https://metal-sentinel.p.rapidapi.com/silver-price?currency=CAD';
-	const options = {
-		method: 'GET',
-		headers: {
-			'x-rapidapi-key': `${apiKey}`, //i'm pretty sure I'm supposed to put my API key... somewhere... 
-            //I used to have my api key just right there lol
-            //not the safest tool in the shed im afraid
-            
-			'x-rapidapi-host': 'metal-sentinel.p.rapidapi.com',
-		    'Content-Type': 'application/json'
-        }
-    };// end of options object
-
-
     try {
-        const response = await fetch(url, options);
-        const result = await response.json();
+    const response = await fetch('/silver-price');
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Unable to fetch the silver price.');
+    }
+
         console.log(result);
         
         AgPrice = result.results[0].bid; // Use optional chaining to safely access nested properties
@@ -37,17 +28,7 @@ async function AgPriceCheck() {
 
         updatedPrices();
         console.log("AgPrice is now:", AgPrice);
-        /*document.querySelectorAll('.coin').forEach((coinCard, index) => {
-        const coin = dataCollect[index];
-        if (!coin) return;
-
-        const asw = coin.ASW_toz * coin.weight_toz;
-        const aswPrice = asw * AgPrice;
-
-        const valueEl = coinCard.querySelector('.current_value');
-        if (valueEl) {
-            valueEl.textContent = `$${aswPrice.toFixed(2)}`;
-        }*/
+        
     
     } catch (error) {
 	console.error(error);
@@ -93,7 +74,7 @@ function updatedPrices() {
   });
 }
 
-fetch("silver_coins.json")
+fetch("assets/silver_coins.json")
   // When the file loads successfully, turn the response into JavaScript objects.
   .then(data => data.json())
   // Once the JSON is ready, do something with it.
